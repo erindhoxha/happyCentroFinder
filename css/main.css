@@ -1,0 +1,653 @@
+/*! HTML5 Boilerplate v7.1.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 1.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+ @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+ @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+.popup-bubble-anchor::after {
+    border-top: none !important;
+}
+#loading-div {
+    position:absolute !important;
+    z-index:99999999999;
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color:black;
+}
+#loading-div img {
+    width:200px;
+}
+
+   html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+    body {
+        font-family: 'Montserrat',
+        cursive;
+        overflow-y:hidden;
+    }
+    .h1-search {
+        font-family: 'Permanent Marker',
+        cursive;
+        margin-top:0px;
+        margin-bottom:10px;
+        font-size:28px;
+    }
+    .close {
+        color:coral;
+    }
+    /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+    #map {
+    height: 100%;
+    height:100vh;
+    background-color:black;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+    background-color:black;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    .img-logo {
+        margin-left:10px;
+    }
+    select {
+        cursor:pointer;
+    }
+    .button-search, .button-center, .button-show, .button-hide, .button-delete {
+        background-color:transparent;
+        font-weight:500;
+        border:2px solid rgb(255, 255, 255);
+        padding:10px 20px;
+        cursor:pointer;
+        color:white;
+    }
+    .button-search {
+        background-color:rgb(255, 104, 50);
+        color:white;
+        border:none;
+        height:40px;
+    }
+    #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+    #input-div {
+        display:flex;
+        width:100%;
+        justify-content: center;
+        align-items: center;
+        height:100vh;
+        position:absolute;
+    }
+    .times {
+        text-align:right;
+        cursor:pointer;
+        right: 16px;
+        position:absolute;
+    }
+    .hide {
+        display:none !important;
+    }
+    .input-popout {
+        text-align:center;    
+        margin-top:20px;
+        width:300px;
+        background-color:white;
+        position:absolute;
+        z-index:1;
+        padding:20px;
+        border-radius:5px;
+        margin:0 auto;
+    }
+    #fakemap {
+        background-color:black;
+        height:95vh;
+    }
+    .input-popout input {
+        height:40px;
+        margin:2px;
+    }
+    .input-popout button {
+        width:218px;
+        background-color:transparent;
+        height:40px;
+        margin-bottom:20px;
+        border:none;
+        background-color:coral;
+        color:white;
+        cursor:pointer;
+        border-radius: 5px;
+        margin-top:10px;
+    }
+     /* The popup bubble styling. */
+      .popup-bubble {
+        /* Position the bubble centred-above its parent. */
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -100%);
+        /* Style the bubble. */
+        background-color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: sans-serif;
+        overflow-y: auto;
+        max-height: 60px;
+        box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.5);
+      }
+      /* The parent of the bubble. A zero-height div at the top of the tip. */
+      .popup-bubble-anchor {
+        /* Position the div a fixed distance above the tip. */
+        position: absolute;
+        width: 100%;
+        bottom: /* TIP_HEIGHT= */ 8px;
+        left: 0;
+      }
+      /* This element draws the tip. */
+      .popup-bubble-anchor::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* Center the tip horizontally. */
+        transform: translate(-50%, 0);
+        /* The tip is a https://css-tricks.com/snippets/css/css-triangle/ */
+        width: 0;
+        height: 0;
+        /* The tip is 8px high, and 12px wide. */
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: /* TIP_HEIGHT= */ 8px solid white;
+      }
+      /* JavaScript will position this div at the bottom of the popup tip. */
+      .popup-container {
+        cursor: auto;
+        height: 0;
+        position: absolute;
+        /* The max width of the info window. */
+        width: 200px;
+      }
+    @media only screen and (max-width: 1024px) {
+      .search {
+          font-size:13px;
+          padding:0px !important;
+      }
+      .search button {
+          padding:10px;
+      }
+    }
+    nav {
+        min-height:80px;
+        height:5vh;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color:rgba(0,0,0,0.21);
+        position:absolute;
+        z-index:9999;
+        width:100%;
+    }
+    .search {
+        margin-left:auto;
+        margin-right:20px;
+    }
+    #legend {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid #000;
+        position:absolute;
+        right:0;
+        z-index:1;
+      }
+      #legend h3 {
+        margin-top: 0;
+      }
+      #legend img {
+        vertical-align: middle;
+      }
+
+            #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+      #search-for-agencies {
+          margin-left:auto;
+          height:42px;
+          font-weight:500;
+          border:2px solid rgb(255, 255, 255);
+          background-color:transparent;
+          color:white;
+      }
+      #search-for-agencies option {
+          color:black;
+          padding:3px;
+      }
+ 
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+ 
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+      .body-content {
+          margin-top:20px;
+          margin-bottom:20px;
+      }
+      .subtitle {
+          font-size:18px;
+          font-weight:500;
+      }
+      .img-agency {
+          width:100%;
+      }
+      .apply {
+        background-color: transparent;
+        border: 2px solid black;
+        padding: 10px;
+        font-weight: 600;
+        margin-right: 10px;
+        margin-bottom:10px;
+    }
+
+      #pac-input, #my-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+      #floating-panel {
+        position: absolute;
+        left: 25%;
+        z-index: 5;
+        background-color:transparent;
+        padding: 5px;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+.description {
+    font-weight:500;
+}
+.goTo {
+    background-color: transparent;
+    border: 1px solid #424242 !important;
+    padding: 10px 20px;
+    border-radius:3px;
+    font-weight:500;
+    cursor:pointer;
+    margin-top:20px;
+    transition: 0.5s ease-in-out;
+}
+.goTo:hover {
+    background-color:coral !important;
+    color:white;
+    border:1px solid coral !important;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+.close-icon {
+    position:absolute;
+    right:8px;
+    cursor:pointer;
+}
+.img-popup {
+    width:50%;
+    display:block;
+    margin:0 auto;
+}
+#content {
+    background-color:white;
+    height:100%;
+    padding:5px 8px;
+    text-align:center;
+    border-radius:10px;
+}
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+
+
+ /* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+ .hidden {
+  display: none !important;
+}
+
+/*
+* Hide only visually, but have it available for screen readers:
+* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+*
+* 1. For long content, line feeds are not interpreted as spaces and small width
+*    causes content to wrap 1 word per line:
+*    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+*/
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
+}
+
+/*
+* Extends the .visuallyhidden class to allow the element
+* to be focusable when navigated to via the keyboard:
+* https://www.drupal.org/node/897638
+*/
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
+}
+
+/*
+* Hide visually and from screen readers, but maintain layout
+*/
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+* Clearfix: contain floats
+*
+* For modern browsers
+* 1. The space content is one way to avoid an Opera bug when the
+*    `contenteditable` attribute is included anywhere else in the document.
+*    Otherwise it causes space to appear at the top and bottom of elements
+*    that receive the `clearfix` class.
+* 2. The use of `table` rather than `block` is only necessary if using
+*    `:before` to contain the top-margins of child elements.
+*/
+
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+ 
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+   @media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+ 
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+   @media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster */
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+
