@@ -6,6 +6,7 @@ $(document).ready(function() {
   }, 1000);
 }) 
   
+var anamsHouse = '23 Gifford Ave, Mount Roskill, Auckland 1041, New Zealand';
 
 for (let i = 0; i < jobs.length; i++) {
   locations.parnell.content += `
