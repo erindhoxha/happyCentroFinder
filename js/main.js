@@ -19,7 +19,7 @@ for (let i = 0; i < jobs.length; i++) {
 }
 
 const apiKey = 'AIzaSyBqQuVR-yPbssBz6MbFl09CGnycKTPJTas';
-var map, infoWindow, pos, marker, destination, origin, latitude, latitude, Popup, popup, infowindow, roamMarker;
+var map, infoWindow, pos, marker, destination, origin, latitude, latitude, Popup, popup, infowindow, roamMarker, globalViewPort, globalAddress;
 var optionDirections, opened = false;
 var markers = [];
 
@@ -89,7 +89,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
     center: pos,
-    zoom: 12,
+    zoom: 6,
     zoomControl: false,
     scaleControl: false,
     mapTypeControl: false,
@@ -185,8 +185,7 @@ function initMap() {
 
   function goToLocation(location) {
     map.setCenter(location);
-    map.setOptions({zoom:14});
-
+    // map.setOptions({zoom:14});
   }
 
   directionsDisplay.setMap(map);
@@ -256,22 +255,14 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
-
-
-
   function addContentToAMarkerAndClickEvent(marker, infowindow) {
     var infowindow = new google.maps.InfoWindow({
       content: infowindow
     });
-
-    marker.addListener("click", function() {
-      if (opened == true) {
         infowindow.close();
-        opened = false;
-      } else {
+    marker.addListener("click", function() {
+        $(".gm-style-iw.gm-style-iw-c").hide();
         infowindow.open(map, marker);
-        opened = true;
-      }
     });
   };
 
@@ -293,17 +284,15 @@ function initMap() {
     }, function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[0]) {
-          console.log(results[0].geometry.viewport.ga.j + ', ' + results[0].geometry.viewport.ma.j);
-          console.log(results[0].formatted_address);
-
+          console.log(results);
+          globalViewPort = results[0].geometry.viewport.ga.j + ', ' + results[0].geometry.viewport.ma.j;
+          globalAddress = results[0].formatted_address;
+          addMarker(event.latLng);
         }
       }
     });
   });
 
-  map.addListener('click', function(event) {
-    addMarker(event.latLng);
-  });
 
   function addMarker(location) {
     var marker = new google.maps.Marker({
@@ -314,7 +303,11 @@ function initMap() {
     });
 
     var infowindow = new google.maps.InfoWindow({
-      content: 'haha'
+      content: `
+      <div style="text-align:center">
+      <p>${globalAddress}</p>
+      <button class="apply" onClick="funct()">Zoom</button>
+      </div>`
     });
     infowindow.open(map, marker);
     clearMarkers();
@@ -367,9 +360,11 @@ function initMap() {
   addMarkerIno(littleGiant, locations.littleGiant.pos, 'Little Giant', happyCentroIcon, locations.littleGiant.content);
   addMarkerIno(markerParnell, locations.parnell.pos, 'Parnell', infoIcon, locations.parnell.content)
   addMarkerInoCircles(sevenGlyphs2, locations.sevenGlyphs.pos, 'Seven Glyphs', eventFindaIcon, locations.sevenGlyphs.content)
-  // addMarkerIno(roamMarker, locations.roamCreative.pos, 'Roam', eventFindaIcon, locations.roamCreative.content)
-  // addMarkerIno(satchiMarker, locations.saatchi.pos, 'Saatchi', happyCentroIcon, locations.saatchi.content);
-
+  addMarkerIno(roamMarker, locations.terabyte.pos, 'Roam', happyCentroIcon, locations.terabyte.content)
+  addMarkerIno(satchiMarker, locations.infoTauranga.pos, 'Saatchi', infoIcon, locations.infoTauranga.content);
+  addMarkerIno(satchiMarker, locations.newPlymouthNews.pos, 'Saatchi', infoIcon, locations.newPlymouthNews.content);
+  addMarkerIno(satchiMarker, locations.theFold.pos, 'Saatchi', eventFindaIcon, locations.theFold.content);
+  addMarkerIno(satchiMarker, locations.queensTown.pos, 'Saatchi', eventFindaIcon, locations.queensTown.content);
 
   Popup = createPopupClass();
   popup = new Popup(
@@ -553,4 +548,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       window.alert('Directions request failed due to ' + status);
     }
   });
+}
+
+function funct() {
+    map.setOptions({
+      zoom: 14
+    });
 }

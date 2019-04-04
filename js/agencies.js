@@ -12,7 +12,21 @@ var locations = {
     <button class="goTo">Find route</button>
     </div>
     `,
-    pos: { lat: -36.85820963029149, lng: 174.7570308697085 }
+    pos: { lat: -39.2273694, lng:173.85180020000007 }
+  },
+    queensTown: {
+    content: `
+    <div style="text-align:center; max-width:230px;">
+    <img style="width:50%;" src="../img/littleGiant.png">
+    <h1 class="title">The fold</h1>
+    <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.happycentro.com</h3></a>
+    <p class="description"> Little Giant is a full service digitally - led agency in Auckland, New Zealand.We transform brands, engage customers and grow businesses.</p>
+    <a href="www.happycentro.com/jobs rel="nofollow" >
+    <p>Careers</p></a>
+    <button class="goTo">Find route</button>
+    </div>
+    `,
+    pos: { lat: -44.72457424179177, lng: 168.8155284953457 }
   },
     gladEye: {
     content: `
@@ -28,7 +42,7 @@ var locations = {
     `,
     pos: { lat: -36.8545453302915, lng: 174.78303591970848 }
   },
-    roamCreative: {
+    infoTauranga: {
     content: `
     <div style="text-align:center; max-width:230px;">
     <img style="width:50%;" src="../img/littleGiant.png">
@@ -40,9 +54,9 @@ var locations = {
     <button class="goTo">Find route</button>
     </div>
     `,
-    pos: { lat: -36.84495231245277, lng: 174.76724529232786 }
+    pos: { lat: -37.6905593802915, lng: 176.16405071970848 }
   },
-  roamCreative: {
+  newPlymouthNews: {
     content: `
     <div style="text-align:center; max-width:230px;">
     <img style="width:50%;" src="../img/littleGiant.png">
@@ -54,7 +68,7 @@ var locations = {
     <button class="goTo">Find route</button>
     </div>
     `,
-    pos: { lat: -36.84495231245277, lng: 174.76724529232786 }
+    pos: { lat: -39.0598644802915, lng: 174.0681638197085 }
   },
   littleGiant: {
     name: 'Little Giant',
@@ -97,7 +111,7 @@ var locations = {
     <button class="goTo">Find route</button>
     </div>
     `,
-    pos: { lat:-36.8823459802915, lng: 174.79986851970853 }
+    pos: { lat:-41.2974335802915, lng: 174.7719019197085 }
   },
   terabyte: {
     content: `
@@ -111,7 +125,7 @@ var locations = {
     <button class="goTo">Find route</button>
     </div>
     `,
-    pos: { lat: -36.8478946802915, lng: 174.74209111970845 }
+    pos: { lat: -43.55239648029149, lng: 172.61188791970847 }
   },
   parnell: {
     pos: { lat: -36.85532372663045, lng: 174.77961434494 },
