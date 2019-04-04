@@ -14,6 +14,7 @@ var locations = {
     `,
     pos: { lat: -39.2273694, lng:173.85180020000007 }
   },
+  //  one in rome 41.87527938233829, 12.553030471353736
     queensTown: {
     content: `
     <div style="text-align:center; max-width:230px;">
