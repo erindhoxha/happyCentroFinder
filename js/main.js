@@ -555,3 +555,24 @@ function funct() {
       zoom: 14
     });
 }
+
+$(".sidebarIconToggle").on('click', function() {
+  localStorage.setItem('Clicked', false);
+})
+$(".hide-sidebar").on('click', function() {
+  localStorage.setItem('Clicked', true);
+})
+
+function hide() {
+  if (localStorage.getItem('Clicked') == "true") {
+    $("#sidebarMenu").css('display', 'none');
+    $(".hide-sidebar a").text('Show sidebar');
+    $(".hide-sidebar span i").remove();
+    $(".hide-sidebar span").append('<i class="fas fa-stream"></i>')
+  } else {
+    $("#sidebarMenu").css('display', 'flex');
+    $(".hide-sidebar a").text('Hide sidebar');
+    $(".hide-sidebar span i").remove();
+    $(".hide-sidebar span").append('<i class="fas fa-times"></i>')
+  }
+}
