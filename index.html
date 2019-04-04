@@ -24,16 +24,17 @@
   <div id="loading-div">
      <img class="img-logo" style="display:none" src="img/agencyFinder-logo-white-nz.png">
   </div>
-
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img class="img-logo" src="img/agencyFinder-logo-white-nz.png" width="150" height="70" alt="">
       </a>
       <div class="search">
         <button class="btn button-center">Center location <i class="fas fa-compass"></i></button>
-       <button class="btn button-search">Search for a destination <i class="fas fa-arrow-right"></i> </button>
+       <button class="btn button-search" style="text-align:left">Search for a destination <i class="fas fa-arrow-right"></i></button>
+       <button class="btn button-sidebar" style="text-align:left"><i class="fas fa-sliders-h"></i>
+      </button>
    </div>
-  </nav>
+  </nav> -->
 
     <div id="input-div" class="hide">
       <div class="input-popout">
@@ -41,7 +42,7 @@
           <i class="fas close fa-times"></i>
         </div>
         <h1 class="h1-search">Search location.</h1>
-          <input style="display:none" id="my-input" placeholder="Current location" type="search" disabled><br>
+          <input style="display:none" id="my-input" placeholder="Current location" type="search" disabled>
           <input id="pac-input" type="search"><br>
           <button id="search-map">Search</button>
       </div>
@@ -50,6 +51,43 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
   <!-- <div id="legend"><h3>Controls</h3></div> -->
+
+    <div class="header">
+      <a class="navbar-brand" href="#">
+        <img class="img-logo" src="img/agencyFinder-logo-white-nz.png" width="150" height="70" alt="">
+      </a>
+      <div class="search">
+        <button class="btn button-center">Center Location <i class="fas fa-compass"></i></button>
+        <button class="btn button-search" style="text-align:left">Search destination <i class="fas fa-arrow-right"></i></button>
+        </button>
+      </div>
+
+    </div>
+    
+      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+      </label>
+      <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+          <li>
+            <a href="#" target="_blank">
+            Show controls</a>
+           <span class="right"><i class="fas fa-sliders-h"></i></span>
+          </li>
+          <li><a href="#" target="_blank">Disable Zoom</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li><a href="#" target="_blank">Disable Click</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li><a href="#" target="_blank">Disable Zoom</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li><a href="#" target="_blank">Disable Click</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li><a href="#" target="_blank">Show jobs</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li><a href="#" target="_blank">Show events</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li><a href="#" target="_blank">Show HappyCentro agencies</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+        </ul>
+        <!-- <p>hardshell &copy; 2019</p> -->
+      </div>
+  
     <div id="map-background">
       <div id="map"></div>
     </div>
