@@ -1,13 +1,11 @@
 $(".img-logo").fadeIn(1500);
-
+var zoom = 0;
 $(document).ready(function() {
   setTimeout(() => {
     $("#loading-div").fadeOut(700);
   }, 1000);
 }) 
   
-var anamsHouse = '23 Gifford Ave, Mount Roskill, Auckland 1041, New Zealand';
-
 for (let i = 0; i < jobs.length; i++) {
   locations.parnell.content += `
     <p class="subtitle">${jobs[i].jobTitle}</p>
@@ -17,8 +15,31 @@ for (let i = 0; i < jobs.length; i++) {
     <span id="indeed_at"><a href="http://www.indeed.com/" rell="nofollow" >jobs</a> by <a href="http://www.indeed.com/" rell="nofollow" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>
     <hr>
    `
+   locations.christchurchJobs.content += `
+   <p class="subtitle">${jobs[i].jobTitle}</p>
+   <p class="subtitle">${jobs[i].jobSubtitle}</p>
+   <p class="body-content">${jobs[i].jobParagraph}</p>
+   <a href="indeed.com"><button class="apply">Apply now</button></a>
+   <span id="indeed_at"><a href="http://www.indeed.com/" rell="nofollow" >jobs</a> by <a href="http://www.indeed.com/" rell="nofollow" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>
+   <hr>
+  `
+   locations.infoTauranga.content += `
+   <p class="subtitle">${jobs[i].jobTitle}</p>
+   <p class="subtitle">${jobs[i].jobSubtitle}</p>
+   <p class="body-content">${jobs[i].jobParagraph}</p>
+   <a href="indeed.com"><button class="apply">Apply now</button></a>
+   <span id="indeed_at"><a href="http://www.indeed.com/" rell="nofollow" >jobs</a> by <a href="http://www.indeed.com/" rell="nofollow" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>
+   <hr>
+  `
+  locations.newPlymouthNews.content += `
+  <p class="subtitle">${jobs[i].jobTitle}</p>
+  <p class="subtitle">${jobs[i].jobSubtitle}</p>
+  <p class="body-content">${jobs[i].jobParagraph}</p>
+  <a href="indeed.com"><button class="apply">Apply now</button></a>
+  <span id="indeed_at"><a href="http://www.indeed.com/" rell="nofollow" >jobs</a> by <a href="http://www.indeed.com/" rell="nofollow" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>
+  <hr>
+ `
 }
-
 const apiKey = 'AIzaSyBqQuVR-yPbssBz6MbFl09CGnycKTPJTas';
 var map, infoWindow, pos, marker, destination, origin, latitude, latitude, Popup, popup, infowindow, roamMarker, globalViewPort, globalAddress;
 var optionDirections, opened = false;
@@ -62,8 +83,10 @@ navigator.geolocation.getCurrentPosition(function(position) {
   console.log(position.coords.longitude)
   console.log(position);
   pos = {
-    lat:position.coords.latitude,
-    lng:position.coords.longitude,
+    // lat:position.coords.latitude,
+    lat: -36.87112197015861, 
+    lng: 174.77266114540453
+    // lng:position.coords.longitude,
   }
   $(".button-center, .center").on('click', function() {
     newLocation(pos.lat, pos.lng);
@@ -90,7 +113,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
     center: pos,
-    zoom: 6,
+    zoom: 5,
     zoomControl: false,
     scaleControl: false,
     mapTypeControl: false,
@@ -358,14 +381,17 @@ function initMap() {
       });
       addContentToAMarkerAndClickEvent(nameOfMarker, content)
     }
-  addMarkerIno(littleGiant, locations.littleGiant.pos, 'Little Giant', happyCentroIcon, locations.littleGiant.content);
-  addMarkerIno(markerParnell, locations.parnell.pos, 'Parnell', infoIcon, locations.parnell.content)
-  addMarkerInoCircles(sevenGlyphs2, locations.sevenGlyphs.pos, 'Seven Glyphs', eventFindaIcon, locations.sevenGlyphs.content)
-  addMarkerIno(roamMarker, locations.terabyte.pos, 'Roam', happyCentroIcon, locations.terabyte.content)
-  addMarkerIno(satchiMarker, locations.infoTauranga.pos, 'Saatchi', infoIcon, locations.infoTauranga.content);
-  addMarkerIno(satchiMarker, locations.newPlymouthNews.pos, 'Saatchi', infoIcon, locations.newPlymouthNews.content);
-  addMarkerIno(satchiMarker, locations.theFold.pos, 'Saatchi', eventFindaIcon, locations.theFold.content);
-  addMarkerIno(satchiMarker, locations.queensTown.pos, 'Saatchi', eventFindaIcon, locations.queensTown.content);
+  addMarkerIno(littleGiant, locations.littleGiant.pos, 'Happy Centro City Centre', happyCentroIcon, locations.littleGiant.content);
+  addMarkerIno(markerParnell, locations.parnell.pos, 'Information Parnell', infoIcon, locations.parnell.content)
+  addMarkerInoCircles(sevenGlyphs2, locations.eventFindaCity.pos, 'Eventfinda City Centre', eventFindaIcon, locations.eventFindaCity.content)
+  addMarkerIno(roamMarker, locations.happyCentroChristchurch.pos, 'Happy Centro Christchurch', happyCentroIcon, locations.happyCentroChristchurch.content)
+  addMarkerIno(satchiMarker, locations.infoTauranga.pos, 'Information Tauranga', infoIcon, locations.infoTauranga.content);
+  addMarkerIno(satchiMarker, locations.newPlymouthNews.pos, 'Informatin New Plymouth', infoIcon, locations.newPlymouthNews.content);
+  addMarkerIno(satchiMarker, locations.eventFindaPlymouth.pos, 'Eventfinda New Plymouth', eventFindaIcon, locations.eventFindaPlymouth.content);
+  addMarkerIno(satchiMarker, locations.queensTown.pos, 'Eventfinda Queenstown', eventFindaIcon, locations.queensTown.content);
+  addMarkerIno(satchiMarker, locations.wellington.pos, 'HappyCentro Wellington', happyCentroIcon, locations.wellington.content);
+  addMarkerIno(satchiMarker, locations.christchurchJobs.pos, 'Information Christchurch', infoIcon, locations.christchurchJobs.content);
+
 
   Popup = createPopupClass();
   popup = new Popup(
@@ -437,32 +463,6 @@ function createPopupClass() {
 
 }
 
-
-
-  var remuera = new google.maps.Marker({
-    position: locations.remuera.pos,
-    map: map,
-    title: 'Uluru (Ayers Rock)',
-    optimized: false,
-    icon: {url:designAgencyIcon, scaledSize: new google.maps.Size(30, 30)},
-    animation: google.maps.Animation.DROP,
-  });
-
-  remuera.addListener('click', function(e) {
-    console.log(e);
-  });
-  
-  addContentToAMarkerAndClickEvent(remuera, locations.remuera.content)
-
-  var markerTamaki = new google.maps.Marker({
-    position: locations.eastTamakiLocation.pos,
-    map: map,
-    title: 'Uluru (Ayers Rock)',
-    optimized: false,
-    icon: {url:infoIcon, scaledSize: new google.maps.Size(30, 30)},
-    animation: google.maps.Animation.DROP,
-  });
-
   //======================================================== MARKERS ===========================================================================================
 
   // Create the DIV to hold the control and call the CenterControl()
@@ -471,13 +471,12 @@ function createPopupClass() {
 // CONTENT
   
     // ADD MARKER TO THE CENTER, AND A CONTENT 
-
     infoWindow = new google.maps.InfoWindow;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lat: -36.87112197015861, 
+          lng: 174.77266114540453
         };
 
         console.log(pos);
@@ -577,3 +576,81 @@ function hide() {
     $(".hide-sidebar span").append('<i class="fas fa-times"></i>')
   }
 }
+
+$(".zoom-in").on('click', function() {
+  var newZoom = map.getZoom();
+  newZoom = newZoom + 1;
+  map.setZoom(newZoom);
+})
+
+$(".zoom-out").on('click', function() {
+  var newZoom = map.getZoom();
+  newZoom = newZoom - 1;
+  map.setZoom(newZoom);
+})
+
+
+
+// global variables for only this kind of function - hide etc
+var agenciesHidden = false;
+var informationHidden = false;
+var jobsHidden = false;
+
+function hideHappyCentroAgencies() {
+  if (agenciesHidden == false) {
+    for (var i = 0; i < $("img").length; i++ ){
+      if ($("img")[i].src.includes('happy') && $("img")[i].style.height == '30px') {
+        $("img")[i].style.visibility ='hidden';
+      }
+    }
+  agenciesHidden = true;
+  } else {
+    showHappyCentroAgencies();
+    agenciesHidden = false;
+  }
+
+}
+
+function showHappyCentroAgencies() {
+  for (var i = 0; i < $("img").length; i++ ){
+    if ($("img")[i].src.includes('happy') && $("img")[i].style.height == '30px') {
+      $("img")[i].style.visibility ='visible';
+    }
+  }
+}
+
+function hideEvents() {
+  for (var i = 0; i < $("img").length; i++ ){
+    if ($("img")[i].src.includes('event') && $("img")[i].style.height == '30px') {
+      $("img")[i].style.visibility ='hidden';
+    }
+  }
+}
+
+function showEvents() {
+  for (var i = 0; i < $("img").length; i++ ){
+    if ($("img")[i].src.includes('event') && $("img")[i].style.height == '30px') {
+      $("img")[i].style.visibility ='visible';
+    }
+  }
+}
+
+function hideInformation() {
+  for (var i = 0; i < $("img").length; i++ ){
+    if ($("img")[i].src.includes('iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD') && $("img")[i].style.height == '30px') {
+      $("img")[i].style.visibility ='hidden';
+    }
+  }
+}
+
+
+function showInformation() {
+  for (var i = 0; i < $("img").length; i++ ){
+    if ($("img")[i].src.includes('iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD') && $("img")[i].style.height == '30px') {
+      $("img")[i].style.visibility ='visible';
+    }
+  }
+}
+
+
+
