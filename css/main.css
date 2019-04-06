@@ -899,9 +899,18 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     width:100%;
     font-weight:500;
     background-color:rgb(37, 119, 233);
+    border:2px solid rgb(37, 119, 233);
     color:white;
     height:40px;
+    cursor:pointer;
     border:none;
+    transition:0.3s ease;
+}
+
+.button-login:hover {
+    background-color:white;
+    border:2px solid rgb(37, 119, 233);
+    color:rgb(37, 119, 233);
 }
 
 .input-login {
@@ -920,4 +929,9 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 .close-modal-span {
     cursor:pointer;
+}
+
+.modal {
+    width:380px;
+    padding:25px !important;
 }

@@ -693,3 +693,9 @@ $(".disable").on('click', function() {
     map.setOptions({draggable: true, zoomControl: true, scrollwheel: true, disableDoubleClickZoom: false});
   }
 })
+
+$(".button-login").on('click', function() {
+  if ($('.input-login[type="text"]').val() == "erindhox" && $('.input-login[type="password"]').val() == "erindhox") {
+    alert("Log in succesfully!");
+  }
+})
