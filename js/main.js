@@ -381,6 +381,26 @@ function initMap() {
   addMarkerIno(satchiMarker, locations.queensTown.pos, 'Eventfinda Queenstown', eventFindaIcon, locations.queensTown.content, new google.maps.Size(50, 50));
 
 
+  if (localStorage.getItem('Disabled') == 'true') {
+    $(".disable a").text('Enable drag');
+    $(".disable span i").css('color', '#e34141');
+    map.setOptions({
+      draggable: false,
+      zoomControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true
+    });
+  } else {
+    $(".disable a").text('Disable drag');
+    $(".disable span i").css('color', 'white');
+    map.setOptions({
+      draggable: true,
+      zoomControl: true,
+      scrollwheel: true,
+      disableDoubleClickZoom: false
+    });
+  }
+
 //   Popup = createPopupClass();
 //   popup = new Popup(
 //     new google.maps.LatLng(locations.parnell.pos.lat, locations.parnell.pos.lng),
@@ -693,6 +713,7 @@ $(".disable").on('click', function() {
     map.setOptions({draggable: true, zoomControl: true, scrollwheel: true, disableDoubleClickZoom: false});
   }
 })
+
 
 $(".button-login").on('click', function() {
   if ($('.input-login[type="text"]').val() == "erindhox" && $('.input-login[type="password"]').val() == "erindhox") {
