@@ -65,7 +65,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     lat:position.coords.latitude,
     lng:position.coords.longitude,
   }
-  $(".button-center").on('click', function() {
+  $(".button-center, .center").on('click', function() {
     newLocation(pos.lat, pos.lng);
     var marker = new google.maps.Marker({
       position: pos,
