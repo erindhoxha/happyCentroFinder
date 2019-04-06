@@ -587,12 +587,12 @@ $(".zoom-out").on('click', function() {
 
 $('.zoom-out, .zoom-in').on('click', function() {
   if (map.getZoom() == 6) {
-    $(".zoom-out span i").css('color','red');
+    $(".zoom-out span i").css('color','#e34141');
   } else {
     $(".zoom-out span i").css('color','white');
   }
   if (map.getZoom() == 15) {
-    $(".zoom-in span i").css('color','red');
+    $(".zoom-in span i").css('color','#e34141');
   } else {
     $(".zoom-in span i").css('color','white');
   }
@@ -616,7 +616,7 @@ function toggleAgencies() {
           } else {
           $("img")[i].style.visibility ='hidden';
           $(".agencies a").text('Agencies - Hidden')
-          $(".agencies span i").css('color', 'red');
+          $(".agencies span i").css('color', '#e34141');
         }
       }
     }
@@ -633,7 +633,7 @@ function toggleEvents() {
         } else {
         $("img")[i].style.visibility ='hidden';
         $(".events a").text('Events - Hidden')
-        $(".events span i").css('color', 'red');
+        $(".events span i").css('color', '#e34141');
       }
     }
   }
@@ -650,7 +650,7 @@ function toggleInformation() {
         } else {
         $("img")[i].style.visibility ='hidden';
         $(".jobs a").text('Jobs - Hidden')
-        $(".jobs span i").css('color', 'red');
+        $(".jobs span i").css('color', '#e34141');
       }
     }
   }
@@ -684,7 +684,7 @@ $(".disable").on('click', function() {
   if (disabled == true) {
     localStorage.setItem('Disabled', true);
     $(".disable a").text('Enable drag');
-    $(".disable span i").css('color', 'red');
+    $(".disable span i").css('color', '#e34141');
     map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
   } else {
     localStorage.setItem('Disabled', false);
