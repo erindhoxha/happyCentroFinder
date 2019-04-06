@@ -648,3 +648,14 @@ $('#modal-container').click(function(){
   $(this).addClass('out');
   $('body').removeClass('modal-active');
 });
+
+$('.button-log-in').click(function(){
+  var buttonId = $(this).attr('id');
+  $('#modal-container-log-in').removeAttr('class').addClass('two');
+  $('body').addClass('modal-active');
+})
+
+$('#modal-container-log-in').click(function(){
+  $(this).addClass('out');
+  $('body').removeClass('modal-active');
+});
