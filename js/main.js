@@ -308,6 +308,7 @@ function initMap() {
     }, function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[0]) {
+          console.log('%c Results from the geocoder!', 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)');
           console.log(results);
           globalViewPort = results[0].geometry.viewport.ga.j + ', ' + results[0].geometry.viewport.ma.j;
           globalAddress = results[0].formatted_address;
@@ -350,7 +351,7 @@ function initMap() {
   var eventFindaIcon = '../img/eventfinda.png';
   // ======================================================== ICONS ====================================================================================
   // ======================================================== MARKERS ====================================================================================
-  function addMarkerIno(nameOfMarker, pos, title, icon, content) {
+  function addMarkerIno(nameOfMarker, pos, title, icon, content, size) {
     var nameOfMarker;
         nameOfMarker = new google.maps.Marker({
         position: pos,
@@ -360,37 +361,23 @@ function initMap() {
         optimized: false,
         icon: {
           url: icon,
-          scaledSize: new google.maps.Size(30, 30)
+          scaledSize: size
         },
       });
       addContentToAMarkerAndClickEvent(nameOfMarker, content)
   }
 
-    function addMarkerInoCircles(nameOfMarker, pos, title, icon, content) {
-      var nameOfMarker;
-      nameOfMarker = new google.maps.Marker({
-        position: pos,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: title,
-        optimized: false,
-        icon: {
-          url: icon,
-          scaledSize: new google.maps.Size(50, 50)
-        },
-      });
-      addContentToAMarkerAndClickEvent(nameOfMarker, content)
-    }
-  addMarkerIno(littleGiant, locations.littleGiant.pos, 'Happy Centro City Centre', happyCentroIcon, locations.littleGiant.content);
-  addMarkerIno(markerParnell, locations.parnell.pos, 'Information Parnell', infoIcon, locations.parnell.content)
-  addMarkerInoCircles(sevenGlyphs2, locations.eventFindaCity.pos, 'Eventfinda City Centre', eventFindaIcon, locations.eventFindaCity.content)
-  addMarkerIno(roamMarker, locations.happyCentroChristchurch.pos, 'Happy Centro Christchurch', happyCentroIcon, locations.happyCentroChristchurch.content)
-  addMarkerIno(satchiMarker, locations.infoTauranga.pos, 'Information Tauranga', infoIcon, locations.infoTauranga.content);
-  addMarkerIno(satchiMarker, locations.newPlymouthNews.pos, 'Informatin New Plymouth', infoIcon, locations.newPlymouthNews.content);
-  addMarkerIno(satchiMarker, locations.eventFindaPlymouth.pos, 'Eventfinda New Plymouth', eventFindaIcon, locations.eventFindaPlymouth.content);
-  addMarkerIno(satchiMarker, locations.queensTown.pos, 'Eventfinda Queenstown', eventFindaIcon, locations.queensTown.content);
-  addMarkerIno(satchiMarker, locations.wellington.pos, 'HappyCentro Wellington', happyCentroIcon, locations.wellington.content);
-  addMarkerIno(satchiMarker, locations.christchurchJobs.pos, 'Information Christchurch', infoIcon, locations.christchurchJobs.content);
+  addMarkerIno(littleGiant, locations.littleGiant.pos, 'Happy Centro City Centre', happyCentroIcon, locations.littleGiant.content, new google.maps.Size(30, 30));
+  addMarkerIno(markerParnell, locations.parnell.pos, 'Information Parnell', infoIcon, locations.parnell.content, new google.maps.Size(30, 30))
+  addMarkerIno(roamMarker, locations.happyCentroChristchurch.pos, 'Happy Centro Christchurch', happyCentroIcon, locations.happyCentroChristchurch.content, new google.maps.Size(30, 30))
+  addMarkerIno(satchiMarker, locations.infoTauranga.pos, 'Information Tauranga', infoIcon, locations.infoTauranga.content, new google.maps.Size(30, 30));
+  addMarkerIno(satchiMarker, locations.newPlymouthNews.pos, 'Informatin New Plymouth', infoIcon, locations.newPlymouthNews.content, new google.maps.Size(30, 30));
+
+  addMarkerIno(satchiMarker, locations.wellington.pos, 'HappyCentro Wellington', happyCentroIcon, locations.wellington.content, new google.maps.Size(30, 30));
+  addMarkerIno(satchiMarker, locations.christchurchJobs.pos, 'Information Christchurch', infoIcon, locations.christchurchJobs.content, new google.maps.Size(30, 30));
+  addMarkerIno(satchiMarker, locations.eventFindaCity.pos, 'Eventfinda City Centre', eventFindaIcon, locations.eventFindaCity.content, new google.maps.Size(50, 50))
+  addMarkerIno(satchiMarker, locations.eventFindaPlymouth.pos, 'Eventfinda New Plymouth', eventFindaIcon, locations.eventFindaPlymouth.content, new google.maps.Size(50, 50));
+  addMarkerIno(satchiMarker, locations.queensTown.pos, 'Eventfinda Queenstown', eventFindaIcon, locations.queensTown.content, new google.maps.Size(50, 50));
 
 
   Popup = createPopupClass();
@@ -520,6 +507,8 @@ function createPopupClass() {
                             'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
     }
+    $('.zoom-in a').text('Zoom in (Current level: ' + map.getZoom() + ')');
+    $('.zoom-out a').text('Zoom Out (Current level: ' + map.getZoom() + ')');
   }
 
 // CLOSE THE INPUT POPOUT
@@ -576,17 +565,22 @@ function hide() {
     $(".hide-sidebar span").append('<i class="fas fa-times"></i>')
   }
 }
-
 $(".zoom-in").on('click', function() {
   var newZoom = map.getZoom();
   newZoom = newZoom + 1;
   map.setZoom(newZoom);
+  $('.zoom-in a').text('Zoom in (Current level: ' + map.getZoom() + ')');
+  $('.zoom-out a').text('Zoom Out (Current level: ' + map.getZoom() + ')');
 })
 
 $(".zoom-out").on('click', function() {
+  $('.zoom-in a').text('Zoom in');
   var newZoom = map.getZoom();
   newZoom = newZoom - 1;
   map.setZoom(newZoom);
+  $('.zoom-in a').text('Zoom in (Current level: ' + map.getZoom() + ')');
+  $('.zoom-out a').text('Zoom Out (Current level: ' + map.getZoom() + ')');
+  
 })
 
 
@@ -594,63 +588,63 @@ $(".zoom-out").on('click', function() {
 // global variables for only this kind of function - hide etc
 var agenciesHidden = false;
 var informationHidden = false;
-var jobsHidden = false;
+var eventsHidden = false;
 
-function hideHappyCentroAgencies() {
-  if (agenciesHidden == false) {
+
+// TOGGLE HAPPYCENTRO AGENCIES
+function toggleAgencies() {
     for (var i = 0; i < $("img").length; i++ ){
       if ($("img")[i].src.includes('happy') && $("img")[i].style.height == '30px') {
-        $("img")[i].style.visibility ='hidden';
+        if (agenciesHidden == true) {
+          $("img")[i].style.visibility ='visible';
+          $(".agencies a").text('Agencies - Visible')
+          } else {
+          $("img")[i].style.visibility ='hidden';
+          $(".agencies a").text('Agencies - Hidden')
+        }
       }
     }
-  agenciesHidden = true;
-  } else {
-    showHappyCentroAgencies();
-    agenciesHidden = false;
-  }
-
+    agenciesHidden = !agenciesHidden;
 }
 
-function showHappyCentroAgencies() {
+function toggleEvents() {
   for (var i = 0; i < $("img").length; i++ ){
-    if ($("img")[i].src.includes('happy') && $("img")[i].style.height == '30px') {
-      $("img")[i].style.visibility ='visible';
+    if ($("img")[i].src.includes('event') && $("img")[i].style.height == '50px') {
+      if (eventsHidden == true) {
+        $("img")[i].style.visibility ='visible';
+        $(".events a").text('Events - Visible')
+        } else {
+        $("img")[i].style.visibility ='hidden';
+        $(".events a").text('Events - Hidden')
+      }
     }
   }
+  eventsHidden = !eventsHidden;
 }
 
-function hideEvents() {
-  for (var i = 0; i < $("img").length; i++ ){
-    if ($("img")[i].src.includes('event') && $("img")[i].style.height == '30px') {
-      $("img")[i].style.visibility ='hidden';
-    }
-  }
-}
-
-function showEvents() {
-  for (var i = 0; i < $("img").length; i++ ){
-    if ($("img")[i].src.includes('event') && $("img")[i].style.height == '30px') {
-      $("img")[i].style.visibility ='visible';
-    }
-  }
-}
-
-function hideInformation() {
+function toggleInformation() {
   for (var i = 0; i < $("img").length; i++ ){
     if ($("img")[i].src.includes('iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD') && $("img")[i].style.height == '30px') {
-      $("img")[i].style.visibility ='hidden';
+      if (informationHidden == true) {
+        $("img")[i].style.visibility ='visible';
+        $(".jobs a").text('Jobs - Visible')
+        } else {
+        $("img")[i].style.visibility ='hidden';
+        $(".jobs a").text('Jobs - Hidden')
+      }
     }
   }
+  informationHidden = !informationHidden;
 }
 
 
-function showInformation() {
-  for (var i = 0; i < $("img").length; i++ ){
-    if ($("img")[i].src.includes('iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD') && $("img")[i].style.height == '30px') {
-      $("img")[i].style.visibility ='visible';
-    }
-  }
-}
+$('.more-settings').click(function(){
+  var buttonId = $(this).attr('id');
+  $('#modal-container').removeAttr('class').addClass('two');
+  $('body').addClass('modal-active');
+})
 
-
-
+$('#modal-container').click(function(){
+  $(this).addClass('out');
+  $('body').removeClass('modal-active');
+});

@@ -10,6 +10,7 @@
   <!-- Place favicon.ico in the root directory -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main-dist.css">
   <meta name="theme-color" content="#fafafa">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous">
@@ -35,8 +36,8 @@
       </button>
    </div>
   </nav> -->
-
     <div id="input-div" class="hide">
+    <div class="input-container">
       <div class="input-popout">
         <div class="times">
           <i class="fas close fa-times"></i>
@@ -47,6 +48,8 @@
           <button id="search-map">Search</button>
       </div>
     </div>
+  </div>
+
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -60,8 +63,9 @@
         <button class="btn button-center">Center Location <i class="fas fa-compass"></i></button>
         <button class="btn button-search" style="text-align:left">Search destination <i class="fas fa-arrow-right"></i></button>
         </button>
+        <button class="btn button-search" style="text-align:left">Log in <i class="fas fa-user"></i></button>
+      </button>
       </div>
-
     </div>
     
       <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -72,18 +76,19 @@
       </label>
       <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
-          <li class="center"><a href="#" target="_blank">Center Location</a><span class="right"><i class="fab fa-centercode"></i></span></li>
-          <li class="zoom-in"><a href="#" target="_blank">Zoom In</a><span class="right"><i class="fas fa-search-plus"></i></span></li>
-          <li class="zoom-out"><a href="#" target="_blank">Zoom Out</a><span class="right"><i class="fas fa-search-minus"></i></span></li>
-          <li><a href="#" target="_blank">Events</a><span class="right"><i class="far fa-calendar-plus"></i></span></li>
-          <li><a href="#" target="_blank">Jobs</a><span class="right"><i class="fas fa-briefcase"></i></span></li>
-          <li onclick="hideHappyCentroAgencies()">HappyCentro agencies<span class="right"><i class="fas fa-pencil-ruler"></i></span></li>
-          <li><a href="#" target="_blank">More settings</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
-          <li class="hide-sidebar">
-            <a href="#" target="_blank">
-            Hide controls and sidebar</a>
-           <span class="right" style="margin-right:3px;"><i class="fas fa-times"></i></span>
-          </li>
+          <li class="center"><a class="noselect" target="_blank">Center Location</a><span class="right"><i class="fab fa-centercode"></i></span></li>
+          <li class="zoom-in"><a class="noselect" class="noselect" target="_blank">Zoom In</a><span class="right"><i class="fas fa-search-plus"></i></span></li>
+          <li class="zoom-out"><a class="noselect" class="noselect" target="_blank">Zoom Out</a><span class="right"><i class="fas fa-search-minus"></i></span></li>
+          <li class="disable"><a class="noselect" target="_blank">Disable drag</a><span class="right"><i class="fas fa-ban"></i></span></li>
+          <li class="events" onclick="toggleEvents()"><a class="noselect" target="_blank">Events - Visible</a><span class="right"><i class="far fa-calendar-plus"></i></span></li>
+          <li class="jobs" onclick="toggleInformation()"><a class="noselect" target="_blank">Jobs - Visible</a><span class="right"><i class="fas fa-briefcase"></i></span></li>
+          <li class="agencies" onclick="toggleAgencies()"><a>Agencies - Visible</a><span class="right"><i class="fas fa-pencil-ruler"></i></span></li>
+          <li class="more-settings"><a class="noselect" target="_blank">More settings</a><span class="right"><i class="fas fa-sliders-h"></i></span></li>
+          <li class="hide-sidebar"><a class="noselect" target="_blank">Hide controls and sidebar</a><span class="right" style="margin-right:3px;"><i class="fas fa-times"></i></span></li>
+          <li class="hide-sidebar"><a class="noselect" target="_blank">Log in to database</a><span class="right" style="margin-right:3px;"><i class="fas fa-user"></i></span></li>
+          <li class="hide-sidebar"><a class="noselect" target="_blank">Report bug</a><span class="right" style="margin-right:3px;"><i class="fas fa-bug"></i></span></li>
+          <li class="hide-sidebar"><a class="noselect" target="_blank">About & Appendix</a><span class="right" style="margin-right:3px;"><i class="fas fa-question-circle"></i></span></li>
+          
         </ul>
         <!-- <p>hardshell &copy; 2019</p> -->
       </div>
@@ -102,6 +107,23 @@
     </div>
     <div id="content2">
       Hello world!
+    </div>
+
+
+    <div id="modal-container">
+      <div class="modal-background">
+        <div class="modal">
+          <h2>Advanced settings</h2>
+          <p>Change map type: </p>
+          <button class="mapType">Terrain</button>
+          <button class="mapType">Terrain</button>
+          <button class="mapType">Terrain</button>
+          <button class="mapType">Terrain</button>
+          <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                    <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                  </svg>
+        </div>
+      </div>
     </div>
   <!-- <div id="fakemap"></div> -->
   <!-- Add your site or application content here -->
