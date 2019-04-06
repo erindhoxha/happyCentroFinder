@@ -193,13 +193,16 @@
     .input-popout {
         text-align:center;    
         margin-top:20px;
-        width:300px;
+        width:400px;
         background-color:white;
         position:absolute;
         z-index:1;
         padding:20px;
         border-radius:5px;
         margin:0 auto;
+    }
+    .modal-svg {
+        z-index:-99999999999999999;
     }
     #fakemap {
         background-color:black;
@@ -889,4 +892,32 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 .header {
     text-align:right;
+}
+
+
+.button-login {
+    width:100%;
+    font-weight:500;
+    background-color:rgb(37, 119, 233);
+    color:white;
+    height:40px;
+    border:none;
+}
+
+.input-login {
+    height: 35px;
+    width: 100%;
+    background-color: white;
+    font-size: 15px;
+    text-indent: 10px;
+    margin-bottom: 5px;
+}
+.close-modal {
+    position:absolute;
+    top:10px;
+    right:10px;
+    cursor:pointer;
+}
+.close-modal-span {
+    cursor:pointer;
 }

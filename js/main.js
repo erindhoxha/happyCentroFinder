@@ -381,12 +381,14 @@ function initMap() {
   addMarkerIno(satchiMarker, locations.queensTown.pos, 'Eventfinda Queenstown', eventFindaIcon, locations.queensTown.content, new google.maps.Size(50, 50));
 
 
-  Popup = createPopupClass();
-  popup = new Popup(
-  new google.maps.LatLng(locations.parnell.pos.lat, locations.parnell.pos.lng),
-  document.getElementById('content'));
-  popup.setMap(map);
-
+//   Popup = createPopupClass();
+//   popup = new Popup(
+//     new google.maps.LatLng(locations.parnell.pos.lat, locations.parnell.pos.lng),
+//     document.getElementById('content'));
+//   popup.setMap(map);
+// setTimeout(() => {
+//    popup.setMap(null);
+// }, 5000);
 function createPopupClass() {
   /**
    * A customized popup on the map.
@@ -672,9 +674,8 @@ $('.button-log-in, .log-in').click(function(){
   $('#modal-container-log-in').removeAttr('class').addClass('two');
   $('body').addClass('modal-active');
 })
-
-$('#modal-container-log-in').click(function(){
-  $(this).addClass('out');
+$('.close-modal').click(function () {
+  $("#modal-container-log-in").addClass('out');
   $('body').removeClass('modal-active');
 });
 
