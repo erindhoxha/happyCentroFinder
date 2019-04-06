@@ -205,7 +205,8 @@ function initMap() {
     ]
   });
 
-
+  var opt = { minZoom: 6, maxZoom: 15 };
+  map.setOptions(opt);
 
   function goToLocation(location) {
     map.setCenter(location);
@@ -580,16 +581,27 @@ $(".zoom-out").on('click', function() {
   map.setZoom(newZoom);
   $('.zoom-in a').text('Zoom in (Current level: ' + map.getZoom() + ')');
   $('.zoom-out a').text('Zoom Out (Current level: ' + map.getZoom() + ')');
-  
 })
 
+$('.zoom-out, .zoom-in').on('click', function() {
+  if (map.getZoom() == 6) {
+    $(".zoom-out span i").css('color','red');
+  } else {
+    $(".zoom-out span i").css('color','white');
+  }
+  if (map.getZoom() == 15) {
+    $(".zoom-in span i").css('color','red');
+  } else {
+    $(".zoom-in span i").css('color','white');
+  }
+})
 
 
 // global variables for only this kind of function - hide etc
 var agenciesHidden = false;
 var informationHidden = false;
 var eventsHidden = false;
-
+var disabled = false;
 
 // TOGGLE HAPPYCENTRO AGENCIES
 function toggleAgencies() {
@@ -598,9 +610,11 @@ function toggleAgencies() {
         if (agenciesHidden == true) {
           $("img")[i].style.visibility ='visible';
           $(".agencies a").text('Agencies - Visible')
+          $(".agencies span i").css('color', 'white');
           } else {
           $("img")[i].style.visibility ='hidden';
           $(".agencies a").text('Agencies - Hidden')
+          $(".agencies span i").css('color', 'red');
         }
       }
     }
@@ -613,9 +627,11 @@ function toggleEvents() {
       if (eventsHidden == true) {
         $("img")[i].style.visibility ='visible';
         $(".events a").text('Events - Visible')
+        $(".events span i").css('color', 'white');
         } else {
         $("img")[i].style.visibility ='hidden';
         $(".events a").text('Events - Hidden')
+        $(".events span i").css('color', 'red');
       }
     }
   }
@@ -628,9 +644,11 @@ function toggleInformation() {
       if (informationHidden == true) {
         $("img")[i].style.visibility ='visible';
         $(".jobs a").text('Jobs - Visible')
+        $(".jobs span i").css('color', 'white');
         } else {
         $("img")[i].style.visibility ='hidden';
         $(".jobs a").text('Jobs - Hidden')
+        $(".jobs span i").css('color', 'red');
       }
     }
   }
@@ -649,7 +667,7 @@ $('#modal-container').click(function(){
   $('body').removeClass('modal-active');
 });
 
-$('.button-log-in').click(function(){
+$('.button-log-in, .log-in').click(function(){
   var buttonId = $(this).attr('id');
   $('#modal-container-log-in').removeAttr('class').addClass('two');
   $('body').addClass('modal-active');
@@ -659,3 +677,18 @@ $('#modal-container-log-in').click(function(){
   $(this).addClass('out');
   $('body').removeClass('modal-active');
 });
+
+$(".disable").on('click', function() {
+  disabled = !disabled;
+  if (disabled == true) {
+    localStorage.setItem('Disabled', true);
+    $(".disable a").text('Enable drag');
+    $(".disable span i").css('color', 'red');
+    map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
+  } else {
+    localStorage.setItem('Disabled', false);
+    $(".disable a").text('Disable drag');
+    $(".disable span i").css('color','white');
+    map.setOptions({draggable: true, zoomControl: true, scrollwheel: true, disableDoubleClickZoom: false});
+  }
+})
