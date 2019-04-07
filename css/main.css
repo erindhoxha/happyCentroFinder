@@ -15,6 +15,9 @@
 .popup-bubble-anchor::after {
     border-top: none !important;
 }
+.ajs-button {
+    background-color:transparent;
+}
 #loading-div {
     position:absolute !important;
     z-index:99999999999;
@@ -27,6 +30,10 @@
 }
 #loading-div img {
     width:340px;
+}
+
+.ajs-modal {
+    z-index:9999999999 !important;
 }
 
    html {

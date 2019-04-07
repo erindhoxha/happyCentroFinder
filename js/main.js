@@ -4,8 +4,8 @@ $(document).ready(function() {
   setTimeout(() => {
     $("#loading-div").fadeOut(700);
     hideEventsWhenPageLoads();
-    hideAgenciesWhenPageLoads();
     hideJobsWhenPageLoads();
+    hideAgenciesWhenPageLoads();
   }, 1000);
 
 }) 
@@ -548,43 +548,46 @@ $('.zoom-out, .zoom-in').on('click', function() {
 
 
 // global variables for only this kind of function - hide etc
+var agenciesHidden = false;
+var informationHidden = false;
+var eventsHidden = false;
 var disabled = false;
-var informationHidden = !informationHidden;
+
 // TOGGLE HAPPYCENTRO AGENCIES
 function toggleAgencies() {
     for (var i = 0; i < $("img").length; i++ ){
       if ($("img")[i].src.includes('happy') && $("img")[i].style.height == '30px') {
-        if (localStorage.getItem('AgenciesHidden') == 'true') {
+        if (agenciesHidden == true) {
           $("img")[i].style.visibility ='visible';
           $(".agencies a").text('Agencies - Visible')
           $(".agencies span i").css('color', 'white');
-           localStorage.setItem('AgenciesHidden', false);
           } else {
           $("img")[i].style.visibility ='hidden';
           $(".agencies a").text('Agencies - Hidden')
           $(".agencies span i").css('color', '#e34141');
-          localStorage.setItem('AgenciesHidden', true);
         }
       }
     }
+    agenciesHidden = !agenciesHidden;
+    localStorage.setItem('AgenciesHidden', agenciesHidden);
 }
 
 function toggleEvents() {
   for (var i = 0; i < $("img").length; i++ ){
     if ($("img")[i].src.includes('event') && $("img")[i].style.height == '50px') {
-      if (localStorage.getItem('EventsHidden') == 'true') {
+      if (eventsHidden == true) {
         $("img")[i].style.visibility ='visible';
         $(".events a").text('Events - Visible')
         $(".events span i").css('color', 'white');
-        localStorage.setItem('EventsHidden', false);
         } else {
         $("img")[i].style.visibility ='hidden';
         $(".events a").text('Events - Hidden')
         $(".events span i").css('color', '#e34141');
-        localStorage.setItem('EventsHidden', true);
       }
     }
   }
+  eventsHidden = !eventsHidden;
+  localStorage.setItem('EventsHidden', eventsHidden);
 }
 
 
@@ -592,14 +595,18 @@ function toggleEvents() {
 function toggleInformation() {
   for (var i = 0; i < $("img").length; i++ ){
     if ($("img")[i].src.includes('iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD') && $("img")[i].style.height == '30px') {
-      if (informationHidden == true && localStorage.getItem('InformationHidden') == 'true') {
+      if (informationHidden == true) {
         $("img")[i].style.visibility ='visible';
         $(".jobs a").text('Jobs - Visible')
         $(".jobs span i").css('color', 'white');
-        } else {
+        } else if (localStorage.getItem('InformationHidden') == 'false') {
         $("img")[i].style.visibility ='hidden';
         $(".jobs a").text('Jobs - Hidden')
         $(".jobs span i").css('color', '#e34141');
+      } else {
+        $("img")[i].style.visibility ='visible';
+        $(".jobs a").text('Jobs - Visible')
+        $(".jobs span i").css('color', 'white');
       }
     }
   }
@@ -647,8 +654,12 @@ $(".disable").on('click', function() {
 
 $(".button-login").on('click', function() {
   if ($('.input-login[type="text"]').val() == "erindhox" && $('.input-login[type="password"]').val() == "erindhox") {
-    alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show(); 
+    alertify.dialog('alert').set({transition:'zoom',title: 'Logged in', message: 'Logged in, you will redirected to admin panel'}).show(); 
+    $('#modal-container-log-in').css('visibility', 'hidden')
+    setTimeout(() => {
     location.href = 'adminPanel.html';
+    }, 2500);
   }
 })
+
 
