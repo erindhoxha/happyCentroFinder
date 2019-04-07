@@ -1,0 +1,148 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <meta name="theme-color" content="#fafafa">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/alertify.min.css">
+  <link rel="stylesheet" href="css/adminPanel.css">
+    <style>
+    .popup-bubble-anchor::after {
+      border-top:none !important;
+    }
+    </style>
+</head>
+<body>
+  <div class="overlay">
+  <!-- Just an image -->
+  <div id="loading-div">
+     <img class="img-logo" style="display:none" src="img/happycentrofinder.png">
+  </div>
+
+      <div class="header" style="height:70px; background-color:black;">
+          <a class="navbar-brand" href="index.html">
+            <img class="img-logo" src="img/happycentrofinder.png" width="190" height="70" alt="">
+          </a>
+          <div class="search">
+            </button>
+            <button class="btn button-log-in" style="text-align:left">Log Out <i class="fas fa-user"></i></button>
+          </button>
+          </div>
+        </div>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle" style="position:fixed">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+
+    <div id="sidebarMenu" style="background-color:black">
+      <ul class="sidebarMenuInner">
+        <li class="center"><a class="noselect" target="_blank">Add marker</a><span class="right"><i class="fas fa-map-marked"></i></span></li>
+        <li class="zoom-in"><a class="noselect" class="noselect" target="_blank">Remove a marker</a><span class="right"><i class="fas fa-map"></i></span></li>
+        <li class="log-in"><a class="noselect" target="_blank">Log out</a><span class="right" style="margin-right:3px;"><i class="fas fa-user"></i></span></li>
+        <li class="hide-sidebar"><a class="noselect" target="_blank">Report bug</a><span class="right" style="margin-right:3px;"><i class="fas fa-bug"></i></span></li>
+        <li class="hide-sidebar"><a class="noselect" target="_blank">About & Appendix</a><span class="right" style="margin-right:3px;"><i class="fas fa-question-circle"></i></span></li>
+      </ul>
+      <!-- <p>hardshell &copy; 2019</p> -->
+    </div>
+</div>
+
+<div class="container-fluid" style="padding-top:80px; padding-left:80px; padding-bottom:80px;">
+  <div class="row">
+    <div class="col-lg-6 pt-4 pl-4">
+      <h3>Hi, erindhox. Welcome to the admin panel.</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptatem magni ipsum maiores, nesciunt repudiandae quo, voluptas molestias quam, voluptatibus qui iste dolorum. Culpa, nobis. Voluptatum accusamus consequatur laboriosam! Id adipisci, amet, perferendis recusandae culpa, ratione facilis tempora debitis voluptates temporibus omnis eaque minima? A atque itaque corporis quod iusto?</p>
+      <hr>
+      <h4 class="mt-3 mb-2">Steps to start with your admin panel:</h4>
+      <ol class="list-steps">
+        <li>
+            Open the <a href="#" class="sidebar-open">sidebar </a><i class="fas fa-map-marker-alt"></i>
+        </li>
+        <li>
+            Create your own marker <i class="fas fa-map-marker-alt"></i>
+        </li>
+        <li>
+            Add it while pressing confirm <i class="fas fa-map-marker-alt"></i>
+        </li>
+        <li>
+            Wait about 10 seconds until the server loads the icon <i class="fas fa-map-marker-alt"></i>
+        </li>
+      </ol>
+    <hr>
+      <h4>Still need help? Check the FAQs</h4>
+        <!-- FIRST ACCORDION -->
+      <p>
+          <a class="" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
+            How do I add a marker?
+          </a>
+        </p>
+        <div class="collapse" id="collapseOne">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+        <!-- Second ACCORDION -->
+        <a class="" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+            How do I remove a marker?
+          </a>
+        </p>
+        <div class="collapse" id="collapseTwo">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+        <!-- Third ACCORDION -->
+        <a class="" data-toggle="collapse" href="#collaseThree" role="button" aria-expanded="false" aria-controls="collaseThree">
+            How do I report a bug?
+          </a>
+        </p>
+        <div class="collapse" id="collaseThree">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+        <!-- Fourth ACCORDION -->
+        <a class="" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
+            How can I contact you?
+          </a>
+        </p>
+        <div class="collapse" id="collapseFour">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+    </div>
+    <div class="col-lg-6 pt-4 pl-4 text-center">
+      <img class="map-gif" src="img/mapGif.gif">
+      </div>
+  </div>
+</div>
+
+  <!-- <div id="fakemap"></div> -->
+  <!-- Add your site or application content here -->
+  <script src="js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/alertify.min.js"></script>
+  <script src="js/adminPanel.js"></script>
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

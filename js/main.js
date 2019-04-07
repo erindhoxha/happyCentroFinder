@@ -647,9 +647,8 @@ $(".disable").on('click', function() {
 
 $(".button-login").on('click', function() {
   if ($('.input-login[type="text"]').val() == "erindhox" && $('.input-login[type="password"]').val() == "erindhox") {
-    alert("Log in succesfully!");
+    alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show(); 
+    location.href = 'adminPanel.html';
   }
 })
-
-
 
