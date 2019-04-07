@@ -90,7 +90,7 @@
         right:0;
     }
     
-    .button-search, .button-center, .button-show, .button-hide, .button-delete, .button-log-in {
+    .button-search, .button-center, .button-show, .button-hide, .button-delete, .button-log-in, .button-log-out {
         background-color:transparent;
         font-size:15px !important;
         font-weight:600;
