@@ -22,6 +22,34 @@
 #loading-div img {
     width:340px;
 }
+.input-admin {
+    height:40px;
+    width:100%;
+    margin-bottom:10px;
+    border:2px solid #ebebeb;
+    text-indent:10px;
+}
+.add-marker-button {
+    margin-left:auto;
+    float:right;
+    width:300px;
+    background-color:rgb(37, 119, 233);
+    height:40px;
+    font-weight:600;
+    color:white;
+}
+.textarea-admin {
+    width:100%;
+    height:200px;
+    border:2px solid #ebebeb;
+    text-indent:10px;
+}
+.select-marker {
+    width:50%;
+    height:40px;
+    border:2px solid #ebebeb;
+    text-indent:10px;
+}
 .ajs-ok {
     background-color:transparent;
 }
@@ -88,7 +116,31 @@
         background-color:rgb(37, 119, 233);
         color:white;
     }
+    .modal {
+        width:100% !important;
+        z-index:9999999999999 !important;
+    }
+    .add-manual {
+        background-color:transparent;
+        border:2px solid #7c7c7c;
+        font-weight:400;
+        padding:10px 20px;
+    }
+    .add-automatic {
+        background-color:rgb(37, 119, 233);
+        font-weight:400;
+        color:white;
+        padding:10px 20px;
+    }
+    .img-right {
+        margin-left: 5px;
+        width:41px;
+        position:absolute;
+    }
     @media only screen and (max-width: 1024px) {
+        .container-fluid {
+            padding-left: 52px !important;
+        }
         #sidebarMenu {
         overflow:scroll;
         }
@@ -307,7 +359,10 @@
       #map #infowindow-content {
         display: inline;
       }
-
+      #map {
+          background-color:black;
+          height:500px;
+      }
       .pac-card {
         margin: 10px 10px 0 0;
         border-radius: 2px 0 0 2px;
