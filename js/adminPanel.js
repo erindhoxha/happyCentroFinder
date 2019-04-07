@@ -106,7 +106,7 @@ var contentAddMarker = `
 <div class="row">
 
 <div class="col-lg-6 pt-4 pl-4">
-  <h3>Hi, erindhox. Welcome to the add marker panel.</h3>
+  <h3>Add marker panel</h3>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptatem magni ipsum maiores, nesciunt repudiandae quo, voluptas molestias quam, voluptatibus qui iste dolorum. Culpa, nobis. Voluptatum accusamus consequatur laboriosam! Id adipisci, amet, perferendis recusandae culpa, ratione facilis tempora debitis voluptates temporibus omnis eaque minima? A atque itaque corporis quod iusto?</p>
   <hr>
   <h4 class="mt-3 mb-2">Choose your marker:</h4>
@@ -143,6 +143,33 @@ var contentAddMarker = `
 `;
 
 
+// ================================== REMOVE MARKER ================================================== //
+
+var contentRemoveMarker = `
+<div class="row">
+
+<div class="col-lg-6 pt-4 pl-4">
+  <h3>Remove marker.</h3>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptatem magni ipsum maiores, nesciunt repudiandae quo, voluptas molestias quam, voluptatibus qui iste dolorum. Culpa, nobis. Voluptatum accusamus consequatur laboriosam! Id adipisci, amet, perferendis recusandae culpa, ratione facilis tempora debitis voluptates temporibus omnis eaque minima? A atque itaque corporis quod iusto?</p>
+  <hr>
+  <h4 class="mt-3 mb-2">Choose your marker:</h4>
+  <select class="select-marker">
+    <option>Agency</option>
+    <option>Event</option>
+    <option>Job</option>
+  </select> <img class="img-right" src="../img/happycentro.jpg"><br>
+
+  <h4 class="mt-3 mb-2">Add location:</h4>
+  <button class="add-automatic" data-toggle="modal" data-target="#exampleModal">Find it on map</button><br>
+  <button class="remove-marker">Remove marker</button>
+</div>
+</div>
+`;
+$(".remove-marker").on('click', function () {
+  $(".container-fluid").empty();
+  $('.container-fluid').append(contentRemoveMarker);
+});
+// ================================== REMOVE MARKER ================================================== //
 
 
 $(".add-marker").on('click', function() {
