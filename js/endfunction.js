@@ -21,7 +21,6 @@ function hideJobsWhenPageLoads() {
         $("img")[i].style.visibility ='hidden';
         $(".jobs a").text('Jobs - Hidden')
         $(".jobs span i").css('color', '#e34141');
-
         } else {
           $("img")[i].style.visibility ='visible';
           $(".jobs a").text('Jobs - Visible')

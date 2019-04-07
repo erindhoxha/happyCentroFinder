@@ -548,46 +548,43 @@ $('.zoom-out, .zoom-in').on('click', function() {
 
 
 // global variables for only this kind of function - hide etc
-var agenciesHidden = false;
-var informationHidden = false;
-var eventsHidden;
 var disabled = false;
-
+var informationHidden = !informationHidden;
 // TOGGLE HAPPYCENTRO AGENCIES
 function toggleAgencies() {
     for (var i = 0; i < $("img").length; i++ ){
       if ($("img")[i].src.includes('happy') && $("img")[i].style.height == '30px') {
-        if (agenciesHidden == true) {
+        if (localStorage.getItem('AgenciesHidden') == 'true') {
           $("img")[i].style.visibility ='visible';
           $(".agencies a").text('Agencies - Visible')
           $(".agencies span i").css('color', 'white');
+           localStorage.setItem('AgenciesHidden', false);
           } else {
           $("img")[i].style.visibility ='hidden';
           $(".agencies a").text('Agencies - Hidden')
           $(".agencies span i").css('color', '#e34141');
+          localStorage.setItem('AgenciesHidden', true);
         }
       }
     }
-    agenciesHidden = !agenciesHidden;
-    localStorage.setItem('AgenciesHidden', agenciesHidden);
 }
 
 function toggleEvents() {
   for (var i = 0; i < $("img").length; i++ ){
     if ($("img")[i].src.includes('event') && $("img")[i].style.height == '50px') {
-      if (eventsHidden == true && localStorage.getItem('EventsHidden') == 'true') {
+      if (localStorage.getItem('EventsHidden') == 'true') {
         $("img")[i].style.visibility ='visible';
         $(".events a").text('Events - Visible')
         $(".events span i").css('color', 'white');
+        localStorage.setItem('EventsHidden', false);
         } else {
         $("img")[i].style.visibility ='hidden';
         $(".events a").text('Events - Hidden')
         $(".events span i").css('color', '#e34141');
+        localStorage.setItem('EventsHidden', true);
       }
     }
   }
-  eventsHidden = !eventsHidden;
-  localStorage.setItem('EventsHidden', eventsHidden);
 }
 
 
@@ -595,7 +592,7 @@ function toggleEvents() {
 function toggleInformation() {
   for (var i = 0; i < $("img").length; i++ ){
     if ($("img")[i].src.includes('iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD') && $("img")[i].style.height == '30px') {
-      if (informationHidden == true) {
+      if (informationHidden == true && localStorage.getItem('InformationHidden') == 'true') {
         $("img")[i].style.visibility ='visible';
         $(".jobs a").text('Jobs - Visible')
         $(".jobs span i").css('color', 'white');
