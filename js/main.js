@@ -3,7 +3,11 @@ var zoom = 0;
 $(document).ready(function() {
   setTimeout(() => {
     $("#loading-div").fadeOut(700);
+    hideEventsWhenPageLoads();
+    hideAgenciesWhenPageLoads();
+    hideJobsWhenPageLoads();
   }, 1000);
+
 }) 
   
 for (let i = 0; i < jobs.length; i++) {
@@ -208,6 +212,7 @@ function initMap() {
   var opt = { minZoom: 6, maxZoom: 15 };
   map.setOptions(opt);
 
+
   function goToLocation(location) {
     map.setCenter(location);
     // map.setOptions({zoom:14});
@@ -233,7 +238,6 @@ function initMap() {
     anchorPoint: new google.maps.Point(0, -29),
     icon: image
   });
-
 
 
   autocomplete.addListener('place_changed', function () {
@@ -327,7 +331,6 @@ function initMap() {
       animation: google.maps.Animation.DROP,
       icon: image,
     });
-
     var infowindow = new google.maps.InfoWindow({
       content: `
       <div style="text-align:center">
@@ -339,6 +342,7 @@ function initMap() {
     clearMarkers();
     markers.push(marker);
   }
+
   // CALL ALL AGENCIES HERE FOR GLOBAL VARIABLE
   var markerParnell, littleGiant, sevenGlyphs2, roamMarker, satchiMarker;
   var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
@@ -381,6 +385,7 @@ function initMap() {
   addMarkerIno(satchiMarker, locations.queensTown.pos, 'Eventfinda Queenstown', eventFindaIcon, locations.queensTown.content, new google.maps.Size(50, 50));
 
 
+  
   if (localStorage.getItem('Disabled') == 'true') {
     $(".disable a").text('Enable drag');
     $(".disable span i").css('color', '#e34141');
@@ -401,84 +406,7 @@ function initMap() {
     });
   }
 
-//   Popup = createPopupClass();
-//   popup = new Popup(
-//     new google.maps.LatLng(locations.parnell.pos.lat, locations.parnell.pos.lng),
-//     document.getElementById('content'));
-//   popup.setMap(map);
-// setTimeout(() => {
-//    popup.setMap(null);
-// }, 5000);
-function createPopupClass() {
-  /**
-   * A customized popup on the map.
-   * @param {!google.maps.LatLng} position
-   * @param {!Element} content The bubble div.
-   * @constructor
-   * @extends {google.maps.OverlayView}
-   */
-  function Popup(position, content) {
-    this.position = position;
-    $(".close-icon").on('click', function () {
-      popup.setMap(null);
-    })
-    // This zero-height div is positioned at the bottom of the bubble.
-    var bubbleAnchor = document.createElement('div');
-    bubbleAnchor.classList.add('popup-bubble-anchor');
-    bubbleAnchor.appendChild(content);
 
-    // This zero-height div is positioned at the bottom of the tip.
-    this.containerDiv = document.createElement('div');
-    this.containerDiv.classList.add('popup-container');
-    this.containerDiv.appendChild(bubbleAnchor);
-
-    // Optionally stop clicks, etc., from bubbling up to the map.
-    google.maps.OverlayView.preventMapHitsAndGesturesFrom(this.containerDiv);
-  }
-  // ES5 magic to extend google.maps.OverlayView.
-  Popup.prototype = Object.create(google.maps.OverlayView.prototype);
-
-  /** Called when the popup is added to the map. */
-  Popup.prototype.onAdd = function() {
-    this.getPanes().floatPane.appendChild(this.containerDiv);
-  };
-
-  /** Called when the popup is removed from the map. */
-  Popup.prototype.onRemove = function() {
-    if (this.containerDiv.parentElement) {
-      this.containerDiv.parentElement.removeChild(this.containerDiv);
-    }
-  };
-
-  /** Called each frame when the popup needs to draw itself. */
-  Popup.prototype.draw = function() {
-    var divPosition = this.getProjection().fromLatLngToDivPixel(this.position);
-
-    // Hide the popup when it is far out of view.
-    var display =
-        Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000 ?
-        'block' :
-        'none';
-
-    if (display === 'block') {
-      this.containerDiv.style.left = divPosition.x + 'px';
-      this.containerDiv.style.top = divPosition.y + 'px';
-    }
-    if (this.containerDiv.style.display !== display) {
-      this.containerDiv.style.display = display;
-    }
-  };
-
-  return Popup;
-
-}
-
-  //======================================================== MARKERS ===========================================================================================
-
-  // Create the DIV to hold the control and call the CenterControl()
-  // constructor passing in this DIV.
-
-// CONTENT
   
     // ADD MARKER TO THE CENTER, AND A CONTENT 
     infoWindow = new google.maps.InfoWindow;
@@ -545,7 +473,6 @@ function closeOrOpen(classOrId, visibleOrNot) {
 
 closeOrOpen(".close", 'hidden');
 closeOrOpen(".button-search", "visible");
-
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: origin,
@@ -566,6 +493,7 @@ function funct() {
     map.setOptions({
       zoom: 14
     });
+
 }
 
 $(".sidebarIconToggle").on('click', function() {
@@ -622,7 +550,7 @@ $('.zoom-out, .zoom-in').on('click', function() {
 // global variables for only this kind of function - hide etc
 var agenciesHidden = false;
 var informationHidden = false;
-var eventsHidden = false;
+var eventsHidden;
 var disabled = false;
 
 // TOGGLE HAPPYCENTRO AGENCIES
@@ -641,12 +569,13 @@ function toggleAgencies() {
       }
     }
     agenciesHidden = !agenciesHidden;
+    localStorage.setItem('AgenciesHidden', agenciesHidden);
 }
 
 function toggleEvents() {
   for (var i = 0; i < $("img").length; i++ ){
     if ($("img")[i].src.includes('event') && $("img")[i].style.height == '50px') {
-      if (eventsHidden == true) {
+      if (eventsHidden == true && localStorage.getItem('EventsHidden') == 'true') {
         $("img")[i].style.visibility ='visible';
         $(".events a").text('Events - Visible')
         $(".events span i").css('color', 'white');
@@ -658,7 +587,10 @@ function toggleEvents() {
     }
   }
   eventsHidden = !eventsHidden;
+  localStorage.setItem('EventsHidden', eventsHidden);
 }
+
+
 
 function toggleInformation() {
   for (var i = 0; i < $("img").length; i++ ){
@@ -675,6 +607,7 @@ function toggleInformation() {
     }
   }
   informationHidden = !informationHidden;
+  localStorage.setItem('InformationHidden', informationHidden);
 }
 
 
@@ -720,3 +653,6 @@ $(".button-login").on('click', function() {
     alert("Log in succesfully!");
   }
 })
+
+
+
