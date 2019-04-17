@@ -44,7 +44,7 @@ for (let i = 0; i < jobs.length; i++) {
   <hr>
  `
 }
-const apiKey = 'AIzaSyBqQuVR-yPbssBz6MbFl09CGnycKTPJTas';
+
 var map, infoWindow, pos, marker, destination, origin, latitude, latitude, Popup, popup, infowindow, roamMarker, globalViewPort, globalAddress;
 var optionDirections, opened = false;
 var markers = [];
