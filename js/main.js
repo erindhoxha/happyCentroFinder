@@ -653,7 +653,7 @@ $(".disable").on('click', function() {
 
 
 $(".button-login").on('click', function() {
-  if ($('.input-login[type="text"]').val() == "erindhox" && $('.input-login[type="password"]').val() == "erindhox") {
+  if ($('.input-login[type="text"]').val() == "admin" && $('.input-login[type="password"]').val() == "admin") {
     alertify.dialog('alert').set({transition:'zoom',title: 'Logged in', message: 'Logged in, you will redirected to admin panel'}).show(); 
     $('#modal-container-log-in').css('visibility', 'hidden')
     setTimeout(() => {
