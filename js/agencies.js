@@ -9,7 +9,7 @@ var locations = {
   littleGiant: {
     content: `
     <div style="text-align:center; max-width:230px;">
-    <img style="width:50%;" src="../img/happycentro.jpg">
+    <img style="width:50%;" src="img/happycentro.jpg">
     <h1 class="title">Happycentro City Centre</h1>
     <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.happycentro.com</h3></a>
     <p class="description"> HappyCentro is a full service digitally - led agency in Auckland, New Zealand.We transform brands, engage customers and grow businesses.</p>
@@ -24,7 +24,7 @@ var locations = {
     content: `
     <div class="happycentro">
     <div style="text-align:center; max-width:230px;">
-    <img style="width:50%;" src="../img/happycentro.jpg">
+    <img style="width:50%;" src="img/happycentro.jpg">
     <h1 class="title">Happycentro Wellington</h1>
     <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.happycentro.com</h3></a>
     <p class="description"> HappyCentro is a full service digitally - led agency in Auckland, New Zealand.We transform brands, engage customers and grow businesses.</p>
@@ -40,7 +40,7 @@ var locations = {
   eventFindaCity: {
     content: `
     <div style="text-align:center; max-width:230px;">
-    <img style="width:50%;" src="../img/eventfinda.png">
+    <img style="width:50%;" src="img/eventfinda.png">
     <h1 class="title">Designers Conference ${dateNow} </h1>
     <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.eventfinda.com</h3></a>
     <p class="description">NZ Events. What's on in New Zealand with Eventfinda, the guide to events in NZ - concerts, gigs, festivals, conferences, expos, theatre & sports in Auckland...</p>
@@ -54,7 +54,7 @@ var locations = {
   eventFindaPlymouth: {
     content: `
     <div style="text-align:center; max-width:230px;">
-    <img style="width:50%;" src="../img/eventfinda.png">
+    <img style="width:50%;" src="img/eventfinda.png">
     <h1 class="title">Eventfinda New Plymouth</h1>
     <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.eventfinda.co.nz</h3></a>
     <p class="description">NZ Events. What's on in New Zealand with Eventfinda, the guide to events in NZ - concerts, gigs, festivals, conferences, expos, theatre & sports in Auckland...</p>
@@ -70,7 +70,7 @@ var locations = {
     queensTown: {
       content: `
       <div style="text-align:center; max-width:230px;">
-      <img style="width:50%;" src="../img/eventfinda.png">
+      <img style="width:50%;" src="img/eventfinda.png">
       <h1 class="title">Eventfinda Queenstown</h1>
       <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.happycentro.com</h3></a>
       <p class="description">NZ Events. What's on in New Zealand with Eventfinda, the guide to events in NZ - concerts, gigs, festivals, conferences, expos, theatre & sports in Auckland...</p>
@@ -84,7 +84,7 @@ var locations = {
   happyCentroChristchurch: {
     content: `
     <div style="text-align:center; max-width:230px;">
-    <img style="width:50%;" src="../img/happycentro.jpg">
+    <img style="width:50%;" src="img/happycentro.jpg">
     <h1 class="title">Happycentro Christchurch</h1>
     <a href="www.happycentro.com target="_blank" rel="nofollow"><h3>www.happycentro.com</h3></a>
     <p class="description"> Happy centro is a full service digitally - led agency in Auckland, New Zealand.We transform brands, engage customers and grow businesses.</p>
