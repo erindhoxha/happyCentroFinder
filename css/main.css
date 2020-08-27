@@ -18,6 +18,9 @@
 .ajs-button {
     background-color:transparent;
 }
+.gm-err-content {
+  background-color:black !important;
+}
 #loading-div {
     position:absolute !important;
     z-index:99999999999;
